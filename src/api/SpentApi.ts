@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const SpentApi = axios.create({
-    baseURL: 'https://considerate-manifestation-production.up.railway.app',
+    baseURL: 'https://spent-api.up.railway.app',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Methods': 'GET, POST, DELETE, PATCH'
