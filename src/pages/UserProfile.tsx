@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { apiGetUser } from "../api/SpentApiManager";
 import EventCard from "../components/EventCardComponent";
 import Header from "../components/HeaderComponent";
-import { User, Event } from "../types/types";
+import { Event, User } from "../types/types";
 
 function UserProfile() {
   const { username } = useParams();
@@ -60,7 +60,7 @@ function UserProfile() {
         justifyContent: "center",
       }}>
         <Card variant="outlined" sx={{
-          width: 1150, marginTop: 10
+          width: 1000, marginTop: 10
         }}>
           <Box sx={{ p: 2 }}>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
