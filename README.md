@@ -22,10 +22,13 @@ To get started with the Spent-FrontEnd, follow these steps:
    git clone https://github.com/davidfreixes/Spent-FrontEnd.git
 
 2. Navigate to the project directory:
+```bash
 cd Spent-FrontEnd
 
-3. Install the dependencies:
+4. Install the dependencies:
+```bash
 npm install
 
-4. Start the development server:
+5. Start the development server:
+```bash
 npm run dev
