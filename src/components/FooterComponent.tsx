@@ -1,11 +1,8 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const logoStyle = {
   width: "100px",
@@ -44,7 +41,7 @@ export default function Footer() {
           borderColor: "divider",
         }}
       >
-        <Box sx={{ width: { xs: "100%", sm: "60%", maxWidth: "40%" } }}>
+        <Box sx={{ width: { xs: "100%", sm: "70%"} }}>
           <Box
             sx={{
               ml: "-15px",
@@ -77,123 +74,6 @@ export default function Footer() {
           </div>
         </Box>
 
-        <Box sx={{ display: "flex", marginLeft: 10 }}>
-          <Box sx={{ flexBasis: "25%", padding: 2 }}>
-            <Typography fontWeight={600}>David</Typography>
-            <Link
-              href="https://github.com/davidfreixes"
-              sx={{ textDecoration: "none", color: "black" }}
-            >
-              <IconButton
-                aria-label="GitHub"
-                sx={{ alignSelf: "center", color: "black" }}
-              >
-                <GitHubIcon />
-              </IconButton>
-              GitHub <br />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/david-freixes/"
-              sx={{ textDecoration: "none" }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="LinkedIn"
-                sx={{ alignSelf: "center" }}
-              >
-                <LinkedInIcon />
-              </IconButton>
-              Linkedin <br />
-            </Link>
-          </Box>
-          <Box sx={{ flexBasis: "25%", padding: 2 }}>
-            <Typography fontWeight={600}>Joël</Typography>
-            <Link
-              href="https://github.com/Jaranag"
-              sx={{ textDecoration: "none", color: "black" }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="GitHub"
-                sx={{ alignSelf: "center", color: "black" }}
-              >
-                <GitHubIcon />
-              </IconButton>
-              GitHub <br />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/joel-arana-gregori/"
-              sx={{ textDecoration: "none" }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="LinkedIn"
-                sx={{ alignSelf: "center" }}
-              >
-                <LinkedInIcon />
-              </IconButton>
-              Linkedin
-            </Link>
-          </Box>
-          <Box sx={{ flexBasis: "25%", padding: 2 }}>
-            <Typography fontWeight={600}>Izar</Typography>
-            <Link
-              href="https://github.com/IzarReina"
-              sx={{ textDecoration: "none", color: "black" }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="GitHub"
-                sx={{ alignSelf: "center", color: "black" }}
-              >
-                <GitHubIcon />
-              </IconButton>
-              GitHub <br />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/izar-reina/"
-              sx={{ textDecoration: "none" }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="LinkedIn"
-                sx={{ alignSelf: "center" }}
-              >
-                <LinkedInIcon />
-              </IconButton>
-              Linkedin
-            </Link>
-          </Box>
-          <Box sx={{ flexBasis: "25%", padding: 2 }}>
-            <Typography fontWeight={600}>Daniela</Typography>
-            <Link
-              href="https://github.com/Daniela-RL"
-              sx={{ textDecoration: "none", color: "black" }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="GitHub"
-                sx={{ alignSelf: "center", color: "black" }}
-              >
-                <GitHubIcon />
-              </IconButton>
-              GitHub <br />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/daniela-rodriguez-lainez/"
-              sx={{ textDecoration: "none" }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="LinkedIn"
-                sx={{ alignSelf: "center" }}
-              >
-                <LinkedInIcon />
-              </IconButton>
-              Linkedin
-            </Link>
-          </Box>
-        </Box>
       </Box>
     </Container>
   );
