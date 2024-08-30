@@ -1,10 +1,10 @@
-import * as React from "react";
-import { Box, Button, Paper, Grid, Typography, Avatar, CssBaseline, Link} from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { apiRegister } from "../api/AuthApiManager";
+import { Avatar, Box, Button, CssBaseline, Grid, Link, Paper, Typography } from "@mui/material";
+import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import ValidatedTextField from "../validations/ValidatedTextField";
+import { apiRegister } from "../api/AuthApiManager";
 import { emailValidator, nameValidator, passwordValidator, usernameValidator } from "../validations/RegisterValidator";
+import ValidatedTextField from "../validations/ValidatedTextField";
 
 
 
@@ -68,109 +68,125 @@ export default function RegisterPage({ setToken }: RegisterPageProps) {
           sx={{
             my: 8,
             mx: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "black" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Register
-          </Typography>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 1 }}
-          >
-            <ValidatedTextField
-              margin="normal"
-              required={true}
-              fullWidth={true}
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus={true}
-              multiline={false}
-              rows={1}
-              validator={emailValidator}
-              onChange={(isValid)=> setEmailIsValid(isValid)}
-              variant="filled"
-            />
-            <ValidatedTextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              multiline={false}
-              rows={1}
-              validator={passwordValidator}
-              onChange={(isValid) => setPasswordIsValid(isValid)}
-              variant="filled"
-            />
-            <ValidatedTextField
-              margin="normal"
-              required
-              fullWidth
-              name="confirm-password"
-              label="Confirm Password"
-              type="password"
-              id="confirm-password"
-              autoComplete="current-password"
-              multiline={false}
-              rows={1}
-              onChange={(isValid) => setConfirmPasswordIsValid(isValid)}
-              validator={() => false}
-              variant="filled"
-              />
-            <ValidatedTextField
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              autoComplete="username"
-              autoFocus
-              multiline={false}
-              rows={1}
-              validator={usernameValidator}
-              onChange={(isValid) => setUsernameIsValid(isValid)}
-              variant="filled"
-            />
-            <ValidatedTextField
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="First Name"
-              name="name"
-              autoComplete="name"
-              autoFocus
-              multiline={false}
-              rows={1}
-              validator={nameValidator}
-              onChange={(isValid) => setNameIsValid(isValid)}
-              variant="filled"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, backgroundColor: "black" }}
-            >
+          <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+            <Avatar sx={{ m: 1, bgcolor: "black" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
               Register
-            </Button>
-            <Typography sx={{ textAlign: "center" }}>
-              Already have an account? <Link href="/">Login</Link>
             </Typography>
+          </Box>
+
+          <Box sx={{ display: "flex", justifyContent: 'center', }}>
+
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1, width: '70%' }}
+            >
+              <Typography sx={{ fontWeight: 'bold', mb: -1.5 }}>
+                Email address
+              </Typography>
+              <ValidatedTextField
+                margin="normal"
+                required={true}
+                fullWidth
+                id="email"
+                label="you@example.com"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                multiline={false}
+                rows={1}
+                validator={emailValidator}
+                onChange={(isValid) => setEmailIsValid(isValid)}
+                variant="filled"
+              />
+              <Typography sx={{ fontWeight: 'bold', marginBottom: -1.5, mt: 1 }}>
+                First Name
+              </Typography>
+              <ValidatedTextField
+                margin="normal"
+                required
+                fullWidth
+                id="name"
+                label="Your First Name"
+                name="name"
+                autoComplete="name"
+                multiline={false}
+                rows={1}
+                validator={nameValidator}
+                onChange={(isValid) => setNameIsValid(isValid)}
+                variant="filled"
+              />
+              <Typography sx={{ fontWeight: 'bold', marginBottom: -1.5, mt: 1 }}>
+                Username
+              </Typography>
+              <ValidatedTextField
+                margin="normal"
+                required
+                fullWidth
+                id="username"
+                label="Your Username"
+                name="username"
+                autoComplete="username"
+                multiline={false}
+                rows={1}
+                validator={usernameValidator}
+                onChange={(isValid) => setUsernameIsValid(isValid)}
+                variant="filled"
+              />
+              <Typography sx={{ fontWeight: 'bold', marginBottom: -1.5, mt: 1 }}>
+                Password
+              </Typography>
+              <ValidatedTextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Your password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                multiline={false}
+                rows={1}
+                validator={passwordValidator}
+                onChange={(isValid) => setPasswordIsValid(isValid)}
+                variant="filled"
+              />
+              <Typography sx={{ fontWeight: 'bold', marginBottom: -1.5, mt: 1 }}>
+                Confirm Password
+              </Typography>
+              <ValidatedTextField
+                margin="normal"
+                required
+                fullWidth
+                name="confirm-password"
+                label="Confirm your password"
+                type="password"
+                id="confirm-password"
+                autoComplete="current-password"
+                multiline={false}
+                rows={1}
+                onChange={(isValid) => setConfirmPasswordIsValid(isValid)}
+                validator={() => false}
+                variant="filled"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, backgroundColor: "black" }}
+              >
+                Register
+              </Button>
+              <Typography sx={{ textAlign: "center" }}>
+                Already have an account? <Link href="/">Login</Link>
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Grid>
