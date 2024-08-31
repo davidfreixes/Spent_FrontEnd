@@ -72,7 +72,6 @@ function UserProfile() {
                   <Grid item xs={2}>
                     <Typography variant="h5">{user.firstName}</Typography>
                     <Typography variant="body1">{user.username}</Typography>
-                    <Typography variant="body1">{user.email}</Typography>
                   </Grid>
                 </Grid>
 
