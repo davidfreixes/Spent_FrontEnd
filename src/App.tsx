@@ -25,7 +25,12 @@ function App() {
     )
     .filter((event: Event) =>
       searchTerm ? event.title.toLowerCase().includes(searchTerm.toLowerCase()) : true
-    );
+    )
+    .filter((event: Event) => {
+      const eventDateTime = new Date(`${event.date} ${event.startTime}`);
+      const now = new Date();
+      return eventDateTime >= now;
+    });
 
   useEffect(() => {
     const fetchEventsAndSports = async () => {
@@ -116,7 +121,7 @@ function App() {
           </Stack>
           {filteredEvents.map((event) => (
             <Box display="flex" flexWrap="wrap">
-              <Box sx={{ width: 600}}>
+              <Box sx={{ width: 600 }}>
                 <EventCard key={event.id} event={event} />
               </Box>
             </Box>
