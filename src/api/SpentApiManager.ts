@@ -10,6 +10,7 @@ export const apiGetUser = async (username: string): Promise<User> => {
         email: userData.email,
         firstName: userData.firstName,
         rating: userData.rating,
+        enabled: userData.enabled,
         eventsCreated: userData.eventsCreated,
         joinedEvents: userData.joinedEvents
     };
@@ -53,6 +54,7 @@ export const apiGetEventById = async (id: String): Promise<Event> => {
             email: userData.userCreator.email,
             firstName: userData.userCreator.firstName,
             rating: userData.userCreator.rating,
+            enabled: userData.userCreator.enabled,
             eventsCreated: [],
             joinedEvents: [],
         } as User,
@@ -99,6 +101,7 @@ export const apiGetEvents = async (): Promise<Event[]> => {
             email: event.userCreator.email,
             firstName: event.userCreator.firstName,
             rating: event.userCreator.rating,
+            enabled: event.userCreator.enabled,
             eventsCreated: [],
             joinedEvents: [],
         } as User,
