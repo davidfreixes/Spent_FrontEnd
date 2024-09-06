@@ -10,7 +10,7 @@ Spent-FrontEnd is the front-end repository for the SPENT application. SPENT is a
 - Integration with the Spent-API for seamless data management
 
 ## Technologies Used
-- JavaScript
+- TypeScript
 - HTML
 - CSS
 
