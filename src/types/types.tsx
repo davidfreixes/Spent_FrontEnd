@@ -10,7 +10,6 @@ export interface User {
     email: string;
     firstName: string;
     rating: number;
-    enabled: boolean;
     eventsCreated: Event[];
     joinedEvents: Event[];
 }

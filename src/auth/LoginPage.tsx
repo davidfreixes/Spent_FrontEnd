@@ -9,18 +9,26 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useState } from "react";
 import { apiLogin } from "../api/AuthApiManager";
 
 export default function LoginPage() {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get("email") as string;
     const password = data.get("password") as string;
+
+
     const token = await apiLogin(email, password);
+    if (token == "User account is not verified" || token == "Invalid credentials.") {
+      setErrorMessage(token);
+      return;
+    }
 
     if (token == undefined || token == "") {
-      alert("Invalid credentials");
+      setErrorMessage("Invalid credentials");
     } else {
       localStorage.setItem("accessToken", token);
       window.location.reload();
@@ -77,12 +85,12 @@ export default function LoginPage() {
             </Typography>
           </Box>
 
-          <Box sx={{display: "flex", justifyContent: 'center',}}>
+          <Box sx={{ display: "flex", justifyContent: 'center', }}>
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1, flexDirection: "column", width: '70%',}}
+              sx={{ mt: 1, flexDirection: "column", width: '70%', }}
             >
               <Typography sx={{ fontWeight: 'bold', mb: -1.5, mt: 1 }}>
                 Email address
@@ -112,6 +120,11 @@ export default function LoginPage() {
                 autoComplete="current-password"
                 variant="filled"
               />
+              {errorMessage && (
+                <Typography sx={{ color: 'red', mb: 2 }}>
+                  {errorMessage}
+                </Typography>
+              )}
               <Button
                 type="submit"
                 fullWidth
@@ -125,7 +138,6 @@ export default function LoginPage() {
               </Typography>
             </Box>
           </Box>
-
         </Box>
       </Grid>
     </Grid>

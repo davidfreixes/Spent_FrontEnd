@@ -17,6 +17,7 @@ export const apiRegister = async (
       token = response.data.accessToken;
       localStorage.setItem("username", response.data.username);
     });
+
     return token;
   } catch (error) {
     console.error("Error during register ocurred: ", error);
@@ -29,16 +30,17 @@ export const apiLogin = async (
   password: string
 ): Promise<string | void> => {
   let token = "";
-  try {
-    await SpentApi.post("/login", { email: email, password: password }).then(
-      (response) => {
-        token = response.data.accessToken;
-        localStorage.setItem("username", response.data.username);
-      }
-    );
-    return token;
-  } catch (error) {
-    console.error("Error during login ocurerd: ", error);
-    return "";
-  }
+  await SpentApi.post("/login", { email: email, password: password }).then(
+    (response) => {
+      token = response.data.accessToken;
+      localStorage.setItem("username", response.data.username);
+    },
+    (error) => {
+      console.error("Error during login occurred: ", error);
+      if (error.response && error.response.data == "User account is not verified")
+        token = error.response.data;
+        return token;
+    }
+  );
+  return token;
 };

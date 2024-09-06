@@ -10,7 +10,6 @@ export const apiGetUser = async (username: string): Promise<User> => {
         email: userData.email,
         firstName: userData.firstName,
         rating: userData.rating,
-        enabled: userData.enabled,
         eventsCreated: userData.eventsCreated,
         joinedEvents: userData.joinedEvents
     };
@@ -54,7 +53,6 @@ export const apiGetEventById = async (id: String): Promise<Event> => {
             email: userData.userCreator.email,
             firstName: userData.userCreator.firstName,
             rating: userData.userCreator.rating,
-            enabled: userData.userCreator.enabled,
             eventsCreated: [],
             joinedEvents: [],
         } as User,
@@ -101,7 +99,6 @@ export const apiGetEvents = async (): Promise<Event[]> => {
             email: event.userCreator.email,
             firstName: event.userCreator.firstName,
             rating: event.userCreator.rating,
-            enabled: event.userCreator.enabled,
             eventsCreated: [],
             joinedEvents: [],
         } as User,
@@ -126,7 +123,7 @@ export const apiJoinEvent = async (id: string) => {
 
 export const apiWithdrawEvent = async (id: string) => {
     await SpentApi.delete(`/events/withdraw/${id}`, { headers: { authorization: localStorage.getItem("accessToken") } });
-}
+};
 
 export const apiCreateEvent = async (
     title: string,
@@ -173,6 +170,4 @@ export const apiEditEvent = async (
         },
         { headers: { authorization: localStorage.getItem("accessToken") } }
     );
-    // console.log(response)
-
 };

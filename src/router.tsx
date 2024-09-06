@@ -8,9 +8,13 @@ import EventCreate from "./pages/EventCreate";
 import EventPage from "./pages/EventPage";
 import SportsPage from "./pages/SportsPage";
 import UserProfile from "./pages/UserProfile";
+import RegisterSuccess from "./pages/verificationPages/RegisterSuccess";
+import VerifyFail from "./pages/verificationPages/VerifyFail";
+import VerifySuccess from "./pages/verificationPages/VerifySuccess";
 
 function Router() {
   const [token, setToken] = useState(localStorage.getItem("accessToken"));
+
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -38,7 +42,10 @@ function Router() {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage setToken={setToken} />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/register-success" element={<RegisterSuccess />} />
+      <Route path="/verify-success" element={<VerifySuccess />} />
+      <Route path="/verify-fail" element={<VerifyFail />} />
     </Routes>
   );
 }
