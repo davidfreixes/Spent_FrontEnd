@@ -123,7 +123,7 @@ export const apiJoinEvent = async (id: string) => {
 
 export const apiWithdrawEvent = async (id: string) => {
     await SpentApi.delete(`/events/withdraw/${id}`, { headers: { authorization: localStorage.getItem("accessToken") } });
-}
+};
 
 export const apiCreateEvent = async (
     title: string,
@@ -170,6 +170,4 @@ export const apiEditEvent = async (
         },
         { headers: { authorization: localStorage.getItem("accessToken") } }
     );
-    // console.log(response)
-
 };

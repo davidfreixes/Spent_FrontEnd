@@ -6,9 +6,7 @@ import { apiRegister } from "../api/AuthApiManager";
 import { emailValidator, nameValidator, passwordValidator, usernameValidator } from "../validations/RegisterValidator";
 import ValidatedTextField from "../validations/ValidatedTextField";
 
-
-
-export default function RegisterPage({ setToken }: RegisterPageProps) {
+export default function RegisterPage() {
   const navigate = useNavigate();
   const [emailIsValid, setEmailIsValid] = React.useState(false);
   const [passwordIsValid, setPasswordIsValid] = React.useState(false);
@@ -32,15 +30,8 @@ export default function RegisterPage({ setToken }: RegisterPageProps) {
       alert("Passwords do not match");
       return;
     }
-    const token = await apiRegister(email, password, name, username);
-
-    if (token == undefined || token == "") {
-      alert("Invalid register");
-    } else {
-      setToken(token);
-      localStorage.setItem("accessToken", token);
-      navigate('/');
-    }
+    await apiRegister(email, password, name, username);
+    navigate('/register-success');
   };
 
   return (
@@ -54,7 +45,6 @@ export default function RegisterPage({ setToken }: RegisterPageProps) {
         md={7}
         sx={{
           backgroundImage: 'url("/LoginBackground.jpg")',
-
           backgroundColor: (t) =>
             t.palette.mode === "light"
               ? t.palette.grey[50]
@@ -193,10 +183,3 @@ export default function RegisterPage({ setToken }: RegisterPageProps) {
     </Grid>
   );
 }
-
-type SetToken = (token: string | null) => void;
-
-interface RegisterPageProps {
-  setToken: SetToken;
-}
-
