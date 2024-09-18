@@ -1,11 +1,11 @@
 import {
-    Card,
-    CardContent,
-    Typography,
-    CardActions,
-    Button,
-    Box,
-  } from "@mui/material";
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@mui/material";
   
   const RegisterSuccess = () => {
     return (
@@ -28,7 +28,7 @@ import {
               </Typography>
               <Typography variant="h5" component="div"></Typography>
               <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
-                Please check your email to verify your account.
+                Please check your email to verify your account. If you don't see it, check your spam folder.
               </Typography>
             </CardContent>
             <CardActions>
