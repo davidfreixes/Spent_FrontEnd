@@ -20,7 +20,7 @@
    Spent is a web application designed for lovers of all kinds of sports. This platform allows users to create and join these sporting events, promoting health and the creation of sustainable local communities.
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">Try it out!</a>
+    <a href="https://spent-alpha.vercel.app/">Try it out!</a>
   </p>
 </div>
 
@@ -131,7 +131,7 @@ The sports for those events, at the moment, have been set by us, so you can chec
 
 More features will be coming in the future though, so stay tuned and check our roadmap down below to see if whatever you want is coming! 
 
-Otherwise you can contact us at SpentContact@gmail.com to recommend any new features.
+Otherwise you can contact us at spentcontactinfo@gmail.com to recommend any new features.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -168,7 +168,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-- SpentContact@gmail.com
+- spentcontactinfo@gmail.com
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
