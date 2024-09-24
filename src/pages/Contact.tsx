@@ -3,35 +3,51 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { Avatar, Box, Button, Grid, IconButton, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import Header from "../components/HeaderComponent";
-// import { apiSendContactForm } from "../api/ContactApiManager";
-// import { contactValidator } from "../validations/ContactValidator";
+
 
 export default function Contact() {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
-    // const [error, setError] = useState(null);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // const data = new FormData(event.currentTarget);
-        // const nameValue = data.get("name") as string;
-        // const emailValue = data.get("email") as string;
-        // const messageValue = data.get("message") as string;
+        if (!name || !email || !message) {
+            Swal.fire({
+                title: "Error!",
+                text: "Please fill in all fields",
+                icon: "error",
+                confirmButtonColor: "#007bff",
+            });
+            return;
+        }
+        const formData = new FormData(event.currentTarget);
 
-        // if (contactValidator(nameValue, emailValue, messageValue)) {
-        //     setError("Invalid input");
-        //     return;
-        // }
+        formData.append("access_key", "d1b7ba68-e213-441a-b812-2125afabf36d");
 
-        // try {
-        //     await apiSendContactForm(nameValue, emailValue, messageValue);
-        //     navigate("/");
-        // } catch (error) {
-        //     setError("Error sending contact form");
-        // }
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: json
+        }).then((res) => res.json());
+
+        if (res.success) {
+            Swal.fire({
+                title: "Success!",
+                text: "Message sent successfully!",
+                icon: "success",
+                confirmButtonColor: "#007bff",
+            });
+        }
     };
 
     const handleClose = () => {
@@ -110,11 +126,6 @@ export default function Contact() {
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                             />
-                            {/* {error && (
-                                <Typography color="error" variant="subtitle2">
-                                    {error}
-                                </Typography>
-                            )} */}
                             <Button
                                 type="submit"
                                 fullWidth

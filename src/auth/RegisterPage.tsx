@@ -50,7 +50,7 @@ export default function RegisterPage() {
               ? t.palette.grey[50]
               : t.palette.grey[900],
           backgroundSize: "cover",
-          backgroundPosition: "left",
+          backgroundPosition: "center",
         }}
       />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -137,7 +137,7 @@ export default function RegisterPage() {
                 required
                 fullWidth
                 name="password"
-                label="Your password"
+                label="Your Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -155,7 +155,7 @@ export default function RegisterPage() {
                 required
                 fullWidth
                 name="confirm-password"
-                label="Confirm your password"
+                label="Confirm Your Password"
                 type="password"
                 id="confirm-password"
                 autoComplete="current-password"

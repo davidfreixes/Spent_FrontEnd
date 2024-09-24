@@ -7,7 +7,7 @@ export const titleValidator: (value: string, enabled?: boolean) => string | fals
 
 export const descriptionValidator = (value: string) => {
     
-    if (value.length > 140) return "The description must have fewer than 140 characters";
+    if (value.length > 500) return "The description must have fewer than 500 characters";
     else if (value.length < 10) return "The description must have at least 10 characters";
     else return false;
 }

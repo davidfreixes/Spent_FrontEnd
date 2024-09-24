@@ -14,6 +14,7 @@ import {
   CardMedia,
   Chip,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
@@ -67,6 +68,7 @@ export default function EventPage() {
   const [openModal, setOpenModal] = React.useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
+  const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -162,8 +164,17 @@ export default function EventPage() {
   };
 
   const handleDeleteEvent = () => {
+    setOpenConfirmDelete(true);
+  };
+
+  const handleConfirmDelete = () => {
     apiDeleteEvent(event.id);
     navigate("/");
+    setOpenConfirmDelete(false);
+  };
+
+  const handleCancelDelete = () => {
+    setOpenConfirmDelete(false);
   };
 
   return (
@@ -388,6 +399,28 @@ export default function EventPage() {
                       >
                         <DeleteIcon />
                       </Button>
+
+                      <Dialog
+                        open={openConfirmDelete}
+                        onClose={handleCancelDelete}
+                        aria-labelledby="confirm-delete-dialog-title"
+                        aria-describedby="confirm-delete-dialog-description"
+                      >
+                        <DialogTitle id="confirm-delete-dialog-title">Confirm Deletion</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText id="confirm-delete-dialog-description">
+                          Are you sure you want to delete the event "{event.title}"?
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleCancelDelete} color="primary">
+                            Cancel
+                          </Button>
+                          <Button onClick={handleConfirmDelete} color="error">
+                            Delete
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
                     </>
                   )}
               </Box>
