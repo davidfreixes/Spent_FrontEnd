@@ -1,3 +1,4 @@
+import { jwtDecode } from "jwt-decode"; // Necesitas instalarlo con: npm install jwt-decode
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "./App";
@@ -13,19 +14,35 @@ import VerifyFail from "./pages/verificationPages/VerifyFail";
 import VerifySuccess from "./pages/verificationPages/VerifySuccess";
 
 function Router() {
-  const [token, setToken] = useState(localStorage.getItem("accessToken"));
+  const getToken = () => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) return null;
 
+    try {
+      const decoded = jwtDecode(token);
+      if (decoded.exp && decoded.exp * 1000 < Date.now()) {
+        localStorage.removeItem("accessToken");
+        return null;
+      }
+      return token;
+    } catch (error) {
+      localStorage.removeItem("accessToken");
+      return null;
+    }
+  };
+
+  const [token, setToken] = useState(getToken());
 
   useEffect(() => {
     const handleStorageChange = () => {
-      setToken(localStorage.getItem("accessToken"));
+      setToken(getToken());
     };
 
     window.addEventListener("storage", handleStorageChange);
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
-  }, [token]);
+  }, []);
 
   if (token)
     return (
